@@ -1,3 +1,7 @@
+[user]
+	name =
+	email =
+
 [color]
 	ui = auto
 
@@ -22,25 +26,32 @@
 	bl = blame -b -w
 	br = branch
 	bra = branch -a
-	dc = diff --cached
 	st = status
 	ss = status -sb
 	su = status -sb -uno
 	di = diff
+	dc = diff --cached
+	ddd = difftool --dir-diff
 	ci = commit
 	co = checkout
-	cp = cherry-pick
+	chp = cherry-pick
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = log --oneline --graph --decorate
 	lop = log -p
 	who = shortlog -s --
 	# Reset
-        unstage = reset HEAD --         # Mixed reset (affects HEAD and Index)
-        undo = reset --soft HEAD~1      # Undo last commit (affects HEAD only)
-        reset = reset --hard HEAD~1     # Remove last commit (from HEAD, Index and Working Dir)
+	unstage = reset HEAD --         # Mixed reset (affects HEAD and Index)
+	undo = reset --soft HEAD~1      # Undo last commit (affects HEAD only)
+	reset = reset --hard HEAD~1     # Remove last commit (from HEAD, Index and Working Dir)
 
 [commit]
-        template = ~/.gitmessage
+	template = $HOME/.git-commit-message
 
 [push]
 	default = current
+
+[diff]
+	tool = meld
+
+[difftool "meld"]
+	cmd = meld "$LOCAL $REMOTE"
